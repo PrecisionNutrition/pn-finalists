@@ -7,7 +7,7 @@
     "start": "./node_modules/.bin/webpack-dev-server --port 7502 --content-base=./public --history-api-fallback --devtool source-map",
     "build": "webpack --progress --colors --optimize-minimize --optimize-dedupe",
     "deploy": "NODE_ENV=production npm run build && git add dist/* && git commit -m 'build(deploy)' && git push heroku develop:master",
-    "preversion": "NODE_ENV=production npm run build",
+    "preversion": "NODE_ENV=production npm run build && git commit -a -m 'pre-version-bump build'",
     "postversion": "git push && git push --tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

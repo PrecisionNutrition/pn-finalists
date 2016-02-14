@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PN Finalists</title>
+    <style>
+      body {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pn-finalists"></div>
+    <script src="/dist/pn-finalists.min.js"></script>
+    <script>
+      ReactDOM.render(
+        React.createElement(PNFinalists),
+        document.getElementById('pn-finalists')
+      );
+    </script>
+  </body>
+</html>

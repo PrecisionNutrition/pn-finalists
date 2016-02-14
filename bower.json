@@ -1,0 +1,18 @@
+{
+  "name": "pn-finalists",
+  "description": "A drop-in component to display an interactive block of PN finalists.",
+  "main": "dist/pn-finalists.min.js",
+  "authors": [
+    "Jason Lengstorf (@jlengstorf) <jason@lengstorf.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/PrecisionNutrition/pn-finalists",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

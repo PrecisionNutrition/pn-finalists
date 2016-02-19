@@ -82,7 +82,7 @@ module.exports = {
       require('postcss-nested'),
       require('postcss-simple-vars'),
       require('postcss-cssnext')(),
-      require('cssnano')({zindex: false}),
+      require('cssnano')({safe: true}),
     ];
   },
 

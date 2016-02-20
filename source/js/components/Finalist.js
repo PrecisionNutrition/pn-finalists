@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {Component} from 'react';
+import Immutable from 'immutable';
 
 function Finalist({finalist, clickHandler = ()=>{}}) {
   return (

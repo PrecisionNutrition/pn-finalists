@@ -16,9 +16,12 @@ function FinalistPopover({app, clickHandler}) {
 
   const images = ['front', 'side', 'back'].map(image => {
     return finalist.images[image] && (
-      <img src={finalist.images[image]}
-           key={image}
-           className={`pn-finalists__image pn-finalists__image--${image}`} />
+      <div className="pn-finalists__image-box">
+        <img src={finalist.images[image]}
+             key={image}
+             onLoad={handleOnLoad}
+             className={`pn-finalists__image pn-finalists__image--${image} pn-finalists__image--loading`} />
+      </div>
     );
   });
 
@@ -73,6 +76,10 @@ function FinalistPopover({app, clickHandler}) {
 }
 
 export default FinalistPopover;
+
+function handleOnLoad(event) {
+  event.target.classList.remove('pn-finalists__image--loading');
+}
 
 function setIfKeyPathExists(app, keyPath) {
   if (app.hasIn(keyPath)) {

@@ -4,7 +4,7 @@
   "description": "A drop-in component to display an interactive block of PN finalists.",
   "main": "app/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --port 7502 --content-base=./public --history-api-fallback --devtool source-map",
+    "start": "./node_modules/.bin/webpack-dev-server --port 7502 --content-base=./public",
     "build": "webpack --progress --colors --optimize-dedupe",
     "deploy": "NODE_ENV=production npm run build && git add dist/* && git commit -m 'build(deploy)' && git push heroku develop:master",
     "preversion": "NODE_ENV=production npm run build && git add -A",

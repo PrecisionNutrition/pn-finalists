@@ -37,7 +37,7 @@ var publicPath = '/dist/';
 
 module.exports = {
   debug: deployConfig.debug,
-  devtool: deployConfig.debug ? 'eval' : undefined,
+  devtool: 'cheap-source-map',
 
   entry: {
     bundle: './source/init.js'

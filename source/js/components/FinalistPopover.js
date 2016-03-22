@@ -69,7 +69,7 @@ function FinalistPopover({app, clickHandler}) {
         </div>
       </div>
       <a className="pn-finalists__close-btn" onClick={clickHandler}>
-        &times;
+        {String.fromCodePoint(0x00D7)}
       </a>
     </div>
   );

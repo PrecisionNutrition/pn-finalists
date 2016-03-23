@@ -3,6 +3,7 @@ import uuid from 'uuid';
 
 const FinalistRecord = Immutable.Record({
   id: undefined,
+  year: undefined,
   group: undefined,
   age: undefined,
   images: {
@@ -35,6 +36,7 @@ export default class Finalist extends FinalistRecord {
 
     super({
       id: finalist.id || uuid.v4(),
+      year: parseInt(finalist.year) || 2015,
       age: parseInt(finalist.age) || false,
       images: {
         front: images.front || false,

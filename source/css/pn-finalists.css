@@ -196,6 +196,7 @@ $color-text-body: #5f5f61;
     display: flex;
     justify-content: space-between;
     background: $color-lightest;
+    background-clip: padding-box;
     border: 1px solid color( $color-darkest alpha(10%) );
     border-radius: 15px;
     box-shadow: 0 0 4px color( $color-darkest alpha(50%) );

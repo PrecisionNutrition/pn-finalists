@@ -254,6 +254,14 @@ $color-text-body: #5f5f61;
     &--loading {
       opacity: 0;
     }
+
+    &--front {
+      border-top-left-radius: 14px;
+    }
+
+    &--back {
+      border-bottom-left-radius: 14px;
+    }
   }
 
   &__info-wrapper {

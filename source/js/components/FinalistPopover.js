@@ -35,7 +35,7 @@ function FinalistPopover({app, clickHandler}) {
         <div className="pn-finalists__info-wrapper">
           <ul className="pn-finalists__info">
             <li className="pn-finalists__info-item pn-finalists__info-item--type">
-              $250,000 Finalist
+              2015 Coaching Client
             </li>
 
             {finalist.age &&

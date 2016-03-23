@@ -51,7 +51,7 @@ function FinalistPopover({app, clickHandler}) {
               <small className="pn-finalists__info-note">(from {finalist.weight.start} lbs to {finalist.weight.end} lbs)</small>
             </li>}
 
-            {finalist.bodyfat &&
+            {finalist.bodyfat > 0 &&
             <li className="pn-finalists__info-item pn-finalists__info-item--bodyfat">
               <strong className="pn-finalists__info-label">% Body Fat Lost:</strong>
               {roundToNearestTenth(finalist.bodyfat.start - finalist.bodyfat.end)}%

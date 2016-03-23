@@ -7,6 +7,7 @@ function FinalistPopover({app, clickHandler}) {
   }
 
   const finalist = {
+    year: setIfKeyPathExists(app, ['finalist', 'year']),
     age: setIfKeyPathExists(app, ['finalist', 'age']),
     images: setIfKeyPathExists(app, ['finalist', 'images']),
     weight: setIfKeyPathExists(app, ['finalist', 'weight']),
@@ -16,55 +17,34 @@ function FinalistPopover({app, clickHandler}) {
 
   const images = ['front', 'side', 'back'].map(image => {
     return finalist.images[image] && (
-      <div className="pn-finalists__image-box">
+      <div className="pn-finalists__image-box" key={image}>
         <img src={finalist.images[image]}
-             key={image}
              onLoad={handleOnLoad}
              className={`pn-finalists__image pn-finalists__image--${image} pn-finalists__image--loading`} />
       </div>
     );
   });
 
+  const age = dataItemSimple(finalist.age, 'Age', ' years');
+  const weight = dataItem(finalist.weight, 'Weight Lost', ' lbs', 'weight');
+  const bodyfat = finalist.bodyfat.start > 0 && dataItem(finalist.bodyfat, '% Body Fat Lost', '%', 'bodyfat');
+  const inches = dataItem(finalist.inches, 'Total Inches Lost', ' inches', 'girth');
+
   return (
     <div className={classes.join(' ')}>
       <div className="pn-finalists__transformation">
-        {finalist.images &&
         <div className="pn-finalists__image-wrapper">
           {images}
-        </div>}
+        </div>
         <div className="pn-finalists__info-wrapper">
           <ul className="pn-finalists__info">
             <li className="pn-finalists__info-item pn-finalists__info-item--type">
-              2015 Coaching Client
+              {finalist.year} Coaching Client
             </li>
-
-            {finalist.age &&
-            <li className="pn-finalists__info-item pn-finalists__info-item--age">
-              <strong className="pn-finalists__info-label">Age:</strong>
-              {finalist.age} years
-            </li>}
-
-            {finalist.weight &&
-            <li className="pn-finalists__info-item pn-finalists__info-item--weight">
-              <strong className="pn-finalists__info-label">Weight Lost:</strong>
-              {roundToNearestTenth(finalist.weight.start - finalist.weight.end)} lbs
-              <small className="pn-finalists__info-note">(from {finalist.weight.start} lbs to {finalist.weight.end} lbs)</small>
-            </li>}
-
-            {finalist.bodyfat > 0 &&
-            <li className="pn-finalists__info-item pn-finalists__info-item--bodyfat">
-              <strong className="pn-finalists__info-label">% Body Fat Lost:</strong>
-              {roundToNearestTenth(finalist.bodyfat.start - finalist.bodyfat.end)}%
-              <small className="pn-finalists__info-note">(from {finalist.bodyfat.start}% to {finalist.bodyfat.end}%)</small>
-            </li>}
-
-            {finalist.inches &&
-            <li className="pn-finalists__info-item pn-finalists__info-item--girth">
-              <strong className="pn-finalists__info-label">Total Inches Lost:</strong>
-              {roundToNearestTenth(finalist.inches.start - finalist.inches.end)} inches
-              <small className="pn-finalists__info-note">(from {finalist.inches.start} inches to {finalist.inches.end} inches)</small>
-            </li>}
-
+            {age}
+            {weight}
+            {bodyfat}
+            {inches}
           </ul>
         </div>
       </div>
@@ -91,4 +71,23 @@ function setIfKeyPathExists(app, keyPath) {
 
 function roundToNearestTenth(num) {
   return Math.round(num * 10) / 10;
+}
+
+function dataItemSimple(data, label, unit, modifier = false) {
+  return data && (
+    <li className={`pn-finalists__info-item pn-finalists__info-item--${label.toLowerCase()}`}>
+      <strong className="pn-finalists__info-label">{label}:</strong>
+      {data}{unit}
+    </li>
+  );
+}
+
+function dataItem(data, label, unit, modifier = false) {
+  return data && (
+    <li className={`pn-finalists__info-item pn-finalists__info-item--${modifier || label.toLowerCase()}`}>
+      <strong className="pn-finalists__info-label">{label}:</strong>
+      {roundToNearestTenth(data.start - data.end)}{unit}
+      <small className="pn-finalists__info-note">(from {data.start}{unit} to {data.end}{unit})</small>
+    </li>
+  );
 }

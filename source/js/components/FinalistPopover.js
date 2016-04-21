@@ -25,10 +25,15 @@ function FinalistPopover({app, clickHandler}) {
     );
   });
 
-  const age = dataItemSimple(finalist.age, 'Age', ' years');
-  const weight = dataItem(finalist.weight, 'Weight Lost', ' lbs', 'weight');
+
+  const ageTerm = pluralize(finalist.age, ' year');
+  const weightTerm = pluralize(roundToNearestTenth(finalist.weight.start - finalist.weight.end), ' lb');
+  const inchesTerm = pluralize(roundToNearestTenth(finalist.inches.start - finalist.inches.end), ' inch', ' inches');
+
+  const age = dataItemSimple(finalist.age, 'Age', ageTerm);
+  const weight = dataItem(finalist.weight, 'Weight Lost', weightTerm, 'weight');
   const bodyfat = finalist.bodyfat.start > 0 && dataItem(finalist.bodyfat, '% Body Fat Lost', '%', 'bodyfat');
-  const inches = dataItem(finalist.inches, 'Total Inches Lost', ' inches', 'girth');
+  const inches = dataItem(finalist.inches, 'Total Inches Lost', inchesTerm, 'girth');
 
   return (
     <div className={classes.join(' ')}>
@@ -90,4 +95,10 @@ function dataItem(data, label, unit, modifier = false) {
       <small className="pn-finalists__info-note">(from {data.start}{unit} to {data.end}{unit})</small>
     </li>
   );
+}
+
+function pluralize(value, singular, plural=false) {
+  console.log(value, typeof value, value === 1);
+  const pluralTerm = plural ? plural : `${singular}s`;
+  return parseInt(value) === 1 ? singular : pluralTerm;
 }

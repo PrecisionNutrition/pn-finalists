@@ -283,7 +283,7 @@ $color-text-body: #5f5f61;
 
     &--type {
       color: $color-text-headline;
-      font-size: 275%;
+      font-size: 225%;
       font-weight: 300;
     }
 

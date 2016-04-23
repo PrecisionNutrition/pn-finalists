@@ -7,12 +7,12 @@ function FinalistPopover({app, clickHandler}) {
   }
 
   const finalist = {
-    year: setIfKeyPathExists(app, ['finalist', 'year']),
     age: setIfKeyPathExists(app, ['finalist', 'age']),
     images: setIfKeyPathExists(app, ['finalist', 'images']),
     weight: setIfKeyPathExists(app, ['finalist', 'weight']),
     inches: setIfKeyPathExists(app, ['finalist', 'inches']),
     bodyfat: setIfKeyPathExists(app, ['finalist', 'bodyfat']),
+    group: setIfKeyPathExists(app, ['finalist', 'group']),
   };
 
   const images = ['front', 'side', 'back'].map(image => {
@@ -25,6 +25,7 @@ function FinalistPopover({app, clickHandler}) {
     );
   });
 
+  const coachingGroup = `${finalist.group==="women" ? "Women" : "Men"}’s`;
 
   const ageTerm = pluralize(finalist.age, ' year');
   const weightTerm = pluralize(roundToNearestTenth(finalist.weight.start - finalist.weight.end), ' lb');
@@ -44,7 +45,7 @@ function FinalistPopover({app, clickHandler}) {
         <div className="pn-finalists__info-wrapper">
           <ul className="pn-finalists__info">
             <li className="pn-finalists__info-item pn-finalists__info-item--type">
-              {finalist.year} Coaching Client
+              {coachingGroup} Coaching Client
             </li>
             {age}
             {weight}
@@ -98,7 +99,6 @@ function dataItem(data, label, unit, modifier = false) {
 }
 
 function pluralize(value, singular, plural=false) {
-  console.log(value, typeof value, value === 1);
   const pluralTerm = plural ? plural : `${singular}s`;
   return parseInt(value) === 1 ? singular : pluralTerm;
 }

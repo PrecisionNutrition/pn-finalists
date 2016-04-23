@@ -38,6 +38,7 @@ export default class Finalist extends FinalistRecord {
       id: finalist.id || uuid.v4(),
       year: parseInt(finalist.year) || 2015,
       age: parseInt(finalist.age) || false,
+      group: finalist.group || false,
       images: {
         front: images.front || false,
         side: images.side || false,

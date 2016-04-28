@@ -29,9 +29,9 @@ export default class Finalist extends FinalistRecord {
 
   constructor(finalist) {
     const images = {
-      front: finalist.image_front && finalist.image_front.url || false,
-      side: finalist.image_side && finalist.image_side.url || false,
-      back: finalist.image_back && finalist.image_back.url || false,
+      front: finalist.image_front && finalist.image_front.sizes.medium || false,
+      side: finalist.image_side && finalist.image_side.sizes.medium || false,
+      back: finalist.image_back && finalist.image_back.sizes.medium || false,
     };
 
     super({

@@ -25,7 +25,7 @@ function FinalistPopover({app, clickHandler}) {
     );
   });
 
-  const coachingGroup = `${finalist.group==="women" ? "Women" : "Men"}&rsquo;s`;
+  const coachingGroup = `${finalist.group==="women" ? "Women" : "Men"}'s`;
 
   const ageTerm = pluralize(finalist.age, ' year');
   const weightTerm = pluralize(roundToNearestTenth(finalist.weight.start - finalist.weight.end), ' lb');

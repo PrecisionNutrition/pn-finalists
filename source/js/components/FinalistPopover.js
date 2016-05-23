@@ -11,7 +11,6 @@ function FinalistPopover({app, clickHandler}) {
     images: setIfKeyPathExists(app, ['finalist', 'images']),
     weight: setIfKeyPathExists(app, ['finalist', 'weight']),
     inches: setIfKeyPathExists(app, ['finalist', 'inches']),
-    bodyfat: setIfKeyPathExists(app, ['finalist', 'bodyfat']),
     group: setIfKeyPathExists(app, ['finalist', 'group']),
   };
 
@@ -33,7 +32,6 @@ function FinalistPopover({app, clickHandler}) {
 
   const age = dataItemSimple(finalist.age, 'Age', ageTerm);
   const weight = dataItem(finalist.weight, 'Weight Lost', weightTerm, 'weight');
-  const bodyfat = finalist.bodyfat.start > 0 && dataItem(finalist.bodyfat, '% Body Fat Lost', '%', 'bodyfat');
   const inches = dataItem(finalist.inches, 'Total Inches Lost', inchesTerm, 'girth');
 
   return (
@@ -49,7 +47,6 @@ function FinalistPopover({app, clickHandler}) {
             </li>
             {age}
             {weight}
-            {bodyfat}
             {inches}
           </ul>
         </div>
